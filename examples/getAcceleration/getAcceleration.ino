@@ -90,11 +90,11 @@ void loop(void){
     //Get the acceleration in the three directions of xyz
     DFRobot_H3LIS200DL::sAccel_t accel = acce.getAcceFromXYZ();
     Serial.print("Acceleration x: "); //print acceleration
-    Serial.print(acce.acceleration_x);
+    Serial.print(accel.acc_x);
     Serial.print(" g \ty: ");
-    Serial.print(acce.acceleration_y);
+    Serial.print(accel.acc_y);
     Serial.print(" g \tz: ");
-    Serial.print(acce.acceleration_z);
+    Serial.print(accel.acc_z);
     Serial.println(" g");
     delay(300);
     */
