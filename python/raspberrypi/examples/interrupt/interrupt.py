@@ -19,7 +19,7 @@ sys.path.append("../..") # set system path to top
 
 from DFRobot_H3LIS200DL import *
 import time
-from gpio import GPIO
+
 
 
 INT1 = 26                           #Interrupt pin
@@ -44,17 +44,22 @@ acce = DFRobot_H3LIS200DL_I2C(I2C_MODE ,ADDRESS_0)
 
 int_pad = GPIO(INT1, GPIO.IN)                   # set int_Pad to input
 int_pad.setInterrupt(GPIO.FALLING, int_pad_callback) #set int_Pad interrupt callback
+
+
 #Chip initialization
 acce.begin()
+
 #Get chip id
 print("chip id :")
-print(acce.getID())
+print(acce.get_id())
+
 '''
 set range:Range(g)
          RANGE_100_G   # ±100g
          RANGE_200_G   # ±200g
 '''
 acce.set_range(acce.RANGE_100_G)
+
 '''
 Set data measurement rate
      POWERDOWN_0HZ 
@@ -90,7 +95,7 @@ acce.set_int1_th(5);
              Z_HIGHERTHAN_TH = 5<The acceleration in the z direction is greater than the threshold>
              EVENT_ERROR = 6 <No event>
 '''
-acce.enable_int_event(acce.eINT1,acce.Y_HIGHERTHAN_TH)
+acce.enable_int_event(acce.INT_1,acce.Y_HIGHERTHAN_TH)
 time.sleep(1)
 
 while True:

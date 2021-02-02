@@ -32,14 +32,14 @@ acce = DFRobot_H3LIS200DL_I2C(I2C_MODE ,ADDRESS_0)
 acce.begin()
 #Get chip id
 print("chip id :")
-print(acce.getID())
+print(acce.get_id())
 
 '''
 set range:Range(g)
              RANGE_100_G   # ±100g
              RANGE_200_G   # ±200g
 '''
-acce.setRange(acce.RANGE_100_G)
+acce.set_range(acce.RANGE_100_G)
 
 '''
 Set data measurement rate
@@ -54,35 +54,36 @@ Set data measurement rate
          NORMAL_400HZ 
          NORMAL_1000HZ 
 '''
-acce.setAcquireRate(acce.NORMAL_50HZ)
+acce.set_acquire_rate(acce.NORMAL_50HZ)
 '''
    Set the threshold of interrupt source 1 interrupt
    threshold Threshold(g),范围是设置好的的测量量程
 '''
-acce.setIntOneTh(5); 
+acce.set_int1_th(5)
 
 #Enable sleep wake function
-acce.enableSleep(True);
+acce.enable_sleep(True)
 
 '''
-  @brief Enable interrupt
-  @ source Interrupt pin selection
-           eINT1 = 0,/<int1 >/
-           eINT2,/<int2>/
-  @param event:Interrupt event selection
-                eXLowThanTh = 0,/<The acceleration in the x direction is less than the threshold>/
-                eXhigherThanTh ,/<The acceleration in the x direction is greater than the threshold>/
-                eYLowThanTh,/<The acceleration in the y direction is less than the threshold>/
-                eYhigherThanTh,/<The acceleration in the y direction is greater than the threshold>/
-                eZLowThanTh,/<The acceleration in the z direction is less than the threshold>/
-                eZhigherThanTh,/<The acceleration in the z direction is greater than the threshold>/
+@brief Enable interrupt
+@source Interrupt pin selection
+         INT_1 = 0,/<int pad 1 >/
+         INT_2,/<int pad 2>/
+@param event Interrupt event selection
+             X_LOWTHAN_TH = 0 <The acceleration in the x direction is less than the threshold>
+             X_HIGHERTHAN_TH  = 1<The acceleration in the x direction is greater than the threshold>
+             Y_LOWTHAN_TH = 2<The acceleration in the y direction is less than the threshold>
+             Y_HIGHERTHAN_TH = 3<The acceleration in the y direction is greater than the threshold>
+             Z_LOWTHAN_TH = 4<The acceleration in the z direction is less than the threshold
+             Z_HIGHERTHAN_TH = 5<The acceleration in the z direction is greater than the threshold>
+             EVENT_ERROR = 6 <No event>
 '''
-acce.enableInterruptEvent(acce.eINT1,acce.E_X_HIGHERTHAN_TH)
+acce.enable_int_event(acce.INT_1,acce.Y_HIGHERTHAN_TH)
 time.sleep(1)
 
 while True:
     #Get the acceleration in the three directions of xyz
     #当有中断产生，能观察到芯片测量的频率明显变快
-    x,y,z = acce.readAcceFromXYZ()
+    x,y,z = acce.read_acce_xyz()
     time.sleep(0.1)
     print("Acceleration [X = %.2f g,Y = %.2f g,Z = %.2f g]"%(x,y,z))
