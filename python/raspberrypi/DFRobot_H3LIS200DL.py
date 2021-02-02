@@ -211,7 +211,7 @@ class DFRobot_H3LIS200DL(object):
       
   '''
     @brief Get chip id
-    @return Returns the eight-digit serial number
+    @return Returns the 8 bit serial number
   '''
   def get_id(self):
     identifier = 0 
