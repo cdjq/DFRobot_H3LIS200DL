@@ -270,21 +270,18 @@ public:
   /**
    * @brief Get the acceleration in the x direction
    * @return acceleration (unit:g)
-
    */
   float readAccX();
   
   /**
    * @brief Get the acceleration in the y direction
    * @return acceleration (unit:g)
-
    */
   float readAccY();
   
   /**
    * @brief Get the acceleration in the z direction
    * @return acceleration (unit:g)
-
    */
   float readAccZ();
 protected:
