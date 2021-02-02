@@ -139,16 +139,16 @@ void loop(void){
     delay(300);
    //The interrupt flag is set
    if(intFlag == 1){
-      //Check whether the interrupt event'source' is generated in interrupt 1
-      if(acce.getInt1Event(DFRobot_H3LIS200DL::eYhigherThanTh)){
+     //Check whether the interrupt event'source' is generated in interrupt 1
+     if(acce.getInt1Event(DFRobot_H3LIS200DL::eYhigherThanTh)){
         Serial.println("The acceleration in the y direction is greater than the threshold");
       }
      if(acce.getInt1Event(DFRobot_H3LIS200DL::eZhigherThanTh)){
        Serial.println("The acceleration in the z direction is greater than the threshold");
       }
-      if(acce.getInt1Event(DFRobot_H3LIS200DL::eXhigherThanTh)){
+     if(acce.getInt1Event(DFRobot_H3LIS200DL::eXhigherThanTh)){
         Serial.println("The acceleration in the x direction is greater than the threshold");
       }
-      intFlag = 0;
+     intFlag = 0;
    }
 }
