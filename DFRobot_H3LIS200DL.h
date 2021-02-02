@@ -81,7 +81,8 @@ typedef enum{
   e200_g/**< ±200g>*/
 }eRange_t;
 
-/*!     High-pass filter cut-off frequency configuration
+/*! 
+ * |---------------------------High-pass filter cut-off frequency configuration-----------------------------|
  * |--------------------------------------------------------------------------------------------------------|
  * |                |    ft [Hz]      |        ft [Hz]       |       ft [Hz]        |        ft [Hz]        |
  * |   mode         |Data rate = 50 Hz|   Data rate = 100 Hz |  Data rate = 400 Hz  |   Data rate = 1000 Hz |
@@ -195,7 +196,7 @@ public:
                  eCutoffMode3,
                  eCutoffMode4,
                  eShutDown,  无过滤
-   *|                     High-pass filter cut-off frequency configuration-----------------------------------|
+   *|----------------------------High-pass filter cut-off frequency configuration----------------------------|
    *|--------------------------------------------------------------------------------------------------------|
    *|                |    ft [Hz]      |        ft [Hz]       |       ft [Hz]        |        ft [Hz]        |
    *|   mode         |Data rate = 50 Hz|   Data rate = 100 Hz |  Data rate = 400 Hz  |   Data rate = 1000 Hz |
