@@ -185,7 +185,7 @@ class DFRobot_H3LIS200DL(object):
     __reset = 1
     if bus != 0:
       self.i2cbus = smbus.SMBus(bus)
-      self.__uart_i2c = I2C_MODE;
+      self.__uart_i2c = I2C_MODE
     else:
       self.__uart_i2c = SPI_MODE
 
@@ -228,16 +228,16 @@ class DFRobot_H3LIS200DL(object):
                  RANGE_200_G = 1# ±200g
   '''
   def set_range(self,range_r):
-    regester = self.REG_CTRL_REG4;
+    regester = self.REG_CTRL_REG4
     if(self.__uart_i2c == SPI_MODE):
-      regester  = self.REG_CTRL_REG4 | 0x80;
+      regester  = self.REG_CTRL_REG4 | 0x80
     reg = self.read_reg(regester)
     if range_r == self.RANGE_100_G:
-     reg = reg & (~0x10);
-     self.__range = 100;
+     reg = reg & (~0x10)
+     self.__range = 100
     else:
-     reg = reg | 0x10;
-     self.__range = 200;
+     reg = reg | 0x10
+     self.__range = 200
     #print(reg)
     self.write_reg(self.REG_CTRL_REG4,reg)
 
@@ -300,7 +300,7 @@ class DFRobot_H3LIS200DL(object):
       reg = reg & (~(0x3 << 3))
       reg = reg | (0x03 << 3)
     #print(reg);
-    self.write_reg(self.REG_CTRL_REG1,reg);
+    self.write_reg(self.REG_CTRL_REG1,reg)
 
   '''
     @brief Set the threshold of interrupt source 1 interrupt
@@ -337,11 +337,11 @@ class DFRobot_H3LIS200DL(object):
   '''
   def enable_int_event(self,source,event):
     reg = 0
-    regester1 = self.REG_INT1_CFG;
-    regester2 = self.REG_INT2_CFG;
+    regester1 = self.REG_INT1_CFG
+    regester2 = self.REG_INT2_CFG
     if(self.__uart_i2c == SPI_MODE):
-      regester1 = self.REG_INT1_CFG | 0x80;
-      regester2 = self.REG_INT2_CFG | 0x80;
+      regester1 = self.REG_INT1_CFG | 0x80
+      regester2 = self.REG_INT2_CFG | 0x80
     
     if source == self.INT_1:
       reg = self.read_reg(regester1)
@@ -408,7 +408,7 @@ class DFRobot_H3LIS200DL(object):
             false：Interrupt event
   '''
   def get_int2_event(self,source):
-    regester = self.REG_INT2_SRC;
+    regester = self.REG_INT2_SRC
     if(self.__uart_i2c == SPI_MODE):
       regester  = self.REG_INT2_SRC | 0x80;
     reg = self.read_reg(regester)
@@ -453,7 +453,7 @@ class DFRobot_H3LIS200DL(object):
     |--------------------------------------------------------------------------------------------------------|
   '''
   def set_filter_mode(self,mode):
-    regester = self.REG_CTRL_REG2;
+    regester = self.REG_CTRL_REG2
     if(self.__uart_i2c == SPI_MODE):
       regester  = self.REG_CTRL_REG2 | 0x80; 
     reg = self.read_reg(regester)
@@ -473,7 +473,7 @@ class DFRobot_H3LIS200DL(object):
   def read_acce_xyz(self):
     regester = self.REG_STATUS_REG
     if(self.__uart_i2c == SPI_MODE):
-      regester  = self.REG_STATUS_REG | 0x80; 
+      regester  = self.REG_STATUS_REG | 0x80
     reg = self.read_reg(regester)
      # reg = 1
     data1 = [0]
@@ -501,7 +501,7 @@ class DFRobot_H3LIS200DL(object):
 '''
 class DFRobot_H3LIS200DL_I2C(DFRobot_H3LIS200DL): 
   def __init__(self ,bus ,addr):
-    self.__addr = addr;
+    self.__addr = addr
     super(DFRobot_H3LIS200DL_I2C, self).__init__(bus,0)
 
   '''
@@ -563,8 +563,8 @@ class DFRobot_H3LIS200DL_SPI(DFRobot_H3LIS200DL):
      data1 =[reg]
      self.__cs.setOut(GPIO.LOW)
      self._spi.transfer(data1)
-     time.sleep(0.01);
-     data = self._spi.readData(1);
+     time.sleep(0.01)
+     data = self._spi.readData(1)
      self.__cs.setOut(GPIO.HIGH)
      #print(data)
      return  data[0]
