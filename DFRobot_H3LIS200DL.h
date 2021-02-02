@@ -314,7 +314,7 @@ public:
   /*!
    * @brief Constructor 
    * @param pWire I2c controller
-   * @param addr  I2C address(0x64/0x65/0x660x67)
+   * @param addr  I2C address(0x18/0x19)
    */
   DFRobot_H3LIS200DL_I2C(TwoWire * pWire = &Wire,uint8_t addr = H3LIS200DL_I2C_ADDR);
   /**
