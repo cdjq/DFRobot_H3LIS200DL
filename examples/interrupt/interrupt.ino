@@ -75,7 +75,7 @@ void setup(void){
   */
   acce.setAcquireRate(/*Rate = */DFRobot_H3LIS200DL::eNormal_50HZ);
   #if defined(ESP32) || defined(ESP8266)||defined(ARDUINO_SAM_ZERO)
-  attachInterrupt(digitalPinToInterrupt(D6)/*Query the interrupt number of the D4 pin*/,interEvent,CHANGE);
+  attachInterrupt(digitalPinToInterrupt(D6)/*Query the interrupt number of the D6 pin*/,interEvent,CHANGE);
   #else
   /*    The Correspondence Table of AVR Series Arduino Interrupt Pins And Terminal Numbers
    * ---------------------------------------------------------------------------------------
